@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  padding: 10;
+  outline: none;
+}
+
+.stencil {
+  width: 170px;
+  height: 500; /* Added unit for height */
+  padding: 15px; /* Increased padding for a cleaner look */
+  background-color: #f9f9f9; /* Slightly lighter background for a modern feel */
+  border: 1px solid #ddd; /* Added a subtle border for structure */
+  border-radius: 8px; /* Rounded corners for a softer appearance */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ensures content is centered horizontally */
+  gap: 15px; /* Increased gap for better spacing between items */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for a subtle 3D effect */
+  overflow-y: auto; /* Allows scrolling if content exceeds the height */
+  font-family: 'Montserrat', sans-serif; /* Consistent font style */
+}
+
+
+.stencil-item1,
+.stencil-item2 {
+  width: 130px;
+  height: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+  cursor: grab;
+  user-select: none;
+  font-family:Montserrat;
+  font-size: small;
+}
+
+.stencil-item1 {
+  border: 2px solid #98f0b8;
+  background-color: #c8facd;
+  color: black;
+}
+
+.stencil-item2 {
+  border: 2px solid #f1f100;
+  background-color: rgb(244, 255, 164);
+  color: black;
+}
+
+.graph-container {
+  margin-left: 1rem;
+  flex-grow: 1;
+  width: fit-content;
+  position: relative;
+  background-color: #f9f9f9; /* Slightly lighter background for a modern feel */
+  border: 1px solid #ddd; /* Added a subtle border for structure */
+  border-radius: 8px; /* Rounded corners for a softer appearance */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.drag-icon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+
+.controls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.icon-stencil {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.icon-item {
+  padding: 5px;
+  border: 1px dashed #ccc;
+  cursor: grab;
+}
+
+.my-component {
+  font-family: 'MyFont';
+}
+
+.controls button:hover {
+  background-color: #e63939; /* Slightly darker red */
+}

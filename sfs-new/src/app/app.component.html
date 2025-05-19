@@ -1,0 +1,76 @@
+<div class="container" (keydown)="onKeyDown($event)" tabindex="0">
+  <!-- Content inside the container remains untouched -->
+  <div class="stencil">
+    <span style="justify-content: center; font-weight: 500; font-family: Montserrat; margin-bottom: 1rem;">You can drag these node(s) to the canvas.</span>
+    <span style="justify-content: center; font-weight: 500; text-align: center; font-family: Montserrat; margin-bottom: 1rem;">Machine Associated</span>
+    <div id="rectangle1"
+         class="stencil-item1"
+         draggable="true"
+         (dragstart)="onDragStart($event)">
+      Operation <img style="width: 20px; height: 20px;" src="factory-machine.png">
+    </div>
+    <div id="rectangle2"
+         class="stencil-item2"
+         style="margin-bottom: 1rem;"
+         draggable="true"
+         (dragstart)="onDragStart($event)">
+      Rework <img style="width: 20px; height: 20px;" src="factory-machine.png">
+    </div>
+    <span style="justify-content: center; font-weight: 500; text-align: center; font-family: Montserrat; margin-bottom: 1rem;">Station Associated</span>
+    <div id="rectangle11"
+         class="stencil-item1"
+         draggable="true"
+         (dragstart)="onDragStart($event)">
+      Operation <img style="width: 20px; height: 20px;" src="graph.png">
+    </div>
+    <div id="rectangle21"
+         class="stencil-item2"
+         draggable="true"
+         (dragstart)="onDragStart($event)">
+      Rework <img style="width: 20px; height: 20px;" src="graph.png">
+    </div>
+  </div>
+
+  <div #graphContainer
+       class="graph-container"
+       (drop)="onDrop($event)"
+       (dragover)="onDragOver($event)">
+       
+  </div>
+
+  <div class="controls" style="margin-top: 1rem; text-align: center; display: flex; justify-content: center; gap: 1rem;">
+    <button (click)="removeSelectedNode()" *ngIf="selectedNode"
+            style="padding: 0.5rem 1rem; font-family: Montserrat, sans-serif; font-weight: 500; border: none; border-radius: 4px; background-color: #ff6b6b; color: white; cursor: pointer; transition: background-color 0.3s;">
+      Delete Node
+    </button>
+    <button (click)="removeSelectedEdge()" *ngIf="selectedEdge"
+            style="padding: 0.5rem 1rem; font-family: Montserrat, sans-serif; font-weight: 500; border: none; border-radius: 4px; background-color: #ff6b6b; color: white; cursor: pointer; transition: background-color 0.3s;">
+      Delete Edge
+    </button>
+  </div>
+  
+</div>
+
+<!-- Graph Selection -->
+<div style="margin-top: 1.5rem; font-family: Montserrat; font-weight: 400; text-align: center;">
+  <label for="graph-select" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #333;">Select a Graph to Load:</label>
+  <select id="graph-select"
+          [(ngModel)]="selectedGraphId"
+          style="width: fit-content; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; font-family: Montserrat; margin-bottom: 1rem;">
+    <option *ngFor="let graph of graphList" [value]="graph._id">
+      {{ graph._id }}
+    </option>
+  </select>
+  <button (click)="loadSelectedGraph()"
+          style="padding: 0.5rem 1rem; font-family: Montserrat; font-weight: 500; border: none; border-radius: 4px; background-color: #4caf50; color: white;">
+    Load Graph
+  </button> 
+</div>
+
+<!-- Save Graph Button -->
+<div style="text-align: center; margin-top: 1rem;">
+  <button (click)="saveGraphToDatabase()"
+          style="padding: 0.5rem 1rem; font-family: Montserrat; font-weight: 500; border: none; border-radius: 4px; background-color: #2196f3; color: white;">
+    Save Current Graph
+  </button>
+</div>
